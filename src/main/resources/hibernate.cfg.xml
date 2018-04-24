@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="connection.url"><![CDATA[jdbc:mysql://localhost:3306/stu]]></property>
+    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+
+    <!--		设置二级缓存插件EHCache的Provider类-->
+    <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory
+    </property>
+
+    <!--        启用查询缓存,以缓存使用find(),list(),Iterator()等方法获得的查询结果集-->
+    <property name="hibernate.cache.use_query_cache">true</property>
+    <property name="hibernate.cache.provider_configuration_file_resource_path">classpath:ehcache.xml</property>
+    <property name="hibernate.cache.use_second_level_cache">true</property>
+    <property name="connection.username">root</property>
+    <property name="connection.password">root</property>
+    <mapping class="com.wanyu.po.HusEntity"/>
+    <mapping class="com.wanyu.po.WifeEntity"/>
+    <mapping class="com.wanyu.po.FatherEntity"/>
+    <mapping class="com.wanyu.po.SonEntity"/>
+    <!-- DB schema will be updated if needed -->
+    <!-- <property name="hbm2ddl.auto">update</property> -->
+  </session-factory>
+</hibernate-configuration>
